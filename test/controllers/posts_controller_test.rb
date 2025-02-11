@@ -20,4 +20,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
     assert { post }
   end
+
+  test 'should fail' do
+    assert { false }
+  end
 end
