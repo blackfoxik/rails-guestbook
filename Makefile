@@ -1,3 +1,6 @@
+PORT?=3000
+RACK_ENV?=development
+
 render-build:
 	bundle install
 	bundle exec rails assets:precompile
@@ -5,7 +8,7 @@ render-build:
 	bundle exec rails db:migrate
 
 render-start:
-	bin/rails server
+	bundle exec puma -t 5:5 -p ${PORT} -e ${RACK_ENV}
 
 start:
 	rm -rf tmp/pids/server.pid || true

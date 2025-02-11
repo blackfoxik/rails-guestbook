@@ -8,6 +8,6 @@ services:
     environment:
       PORT: 3000
       SECRET_KEY_BASE: test
-      RAILS_ENV: production
+      RAILS_ENV: staging
     ports:
       - 3000:3000
