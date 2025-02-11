@@ -1,7 +1,19 @@
+render-build:
+	bundle install
+	bundle exec rails assets:precompile
+	bundle exec rails assets:clean
+	bundle exec rails db:migrate
+
+render-start:
+	bin/rails server
+
 start:
 	rm -rf tmp/pids/server.pid || true
 	bin/rails s
-setup: install db-prepare
+
+setup: install
+	bin/rails assets:precompile
+	make db-prepare
 
 install:
 	bin/setup
@@ -28,6 +40,5 @@ compose-production-run-app:
 
 compose-production-console:
 	docker compose -p rails_bulletin_board_project_ru-production -f docker-compose.production.yml exec app bin/rails console
-
 
 .PHONY: test
