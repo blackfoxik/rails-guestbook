@@ -7,7 +7,7 @@ on:
       - main
   push:
     branches:
-      - render-config
+      - render-test
 
 jobs:
   build:
@@ -40,4 +40,4 @@ jobs:
 
       - name: Deploy
         run: |
-          "curl ${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
+          curl ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
