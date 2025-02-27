@@ -30,14 +30,14 @@ jobs:
           make setup
           make test
 
-  # deploy:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   if: ${{ github.event_name == 'push' }}
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
 
-  #   steps:
-  #     - uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-  #     - name: Deploy
-  #       run: |
-  #         curl ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+      - name: Deploy
+        run: |
+          curl ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
